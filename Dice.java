@@ -1,10 +1,11 @@
-import java.util.Random;
 class Dice
 {
     int getDiceValue()
     {
-        Random randomGenerator = new Random();
-        int diceValue = randomGenerator.nextInt(6) + 1;
+        int diceMaximumValue = 6;
+        int diceMinimumValue = 1;
+        int diceValue = (int)(diceMaximumValue * Math.random());
+        diceValue += diceMinimumValue;
         return diceValue;
     }
 }

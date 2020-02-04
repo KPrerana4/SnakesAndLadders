@@ -2,40 +2,40 @@ public class Board
 {
     Snakes snakes;
     Ladders ladders;
-    int maximumValue;
+    int boardMaximumValue;
 
     Board()
     {
         snakes = new Snakes();
         ladders = new Ladders();
-        maximumValue = 30;
+        boardMaximumValue = 30;
     }
 
-    boolean validate(int playerCurrentPosition, int diceValue)
+    boolean canDiceValueBeUsed(int playerCurrentPosition, int diceValue)
     {
-
-        boolean isValid = playerCurrentPosition + diceValue <= maximumValue;
+        boolean isValid = playerCurrentPosition + diceValue <= boardMaximumValue;
         return isValid;
     }
 
     int movePlayersCoin(int playerPosition, int diceValue)
     {
         int newPosition = playerPosition + diceValue;
-
-        newPosition = snakes.checkForSnakes(newPosition);
-        newPosition = ladders.checkForLadders(newPosition);
+        newPosition = ladders.getEndPosition(newPosition);
+        newPosition = snakes.getEndPosition(newPosition);
         return newPosition;
     }
 
     void printBoardDetails()
     {
+        System.out.println("Snakes Positions:");
         snakes.printSnakesPositions();
+        System.out.println("Ladders Positions:");
         ladders.printLaddersPositions();
     }
 
     boolean winCheck(int playerPosition)
     {
-        boolean win = playerPosition == maximumValue;
+        boolean win = playerPosition == boardMaximumValue;
         return win;
     }
 }
