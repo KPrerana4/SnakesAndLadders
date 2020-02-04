@@ -3,17 +3,16 @@ class Snakes
     int[] startPositions = {17, 19, 21, 27};
     int[] endingPositions = {4, 7, 9, 1};
 
-    int getEndPosition(int playerPosition)
+    int getEndPosition(int position)
     {
-        int number, noOfSnakes = startPositions.length;
-        for(number=0; number < noOfSnakes; number++)
+        int noOfSnakes = startPositions.length;
+        int number = 0;
+        while (position != stratPositions[number] && number < noOfSnakes)
         {
-            if (playerPosition == startPositions[number])
-            {
-                return endingPositions[number];
-            }
+            number++;
         }
-        return playerPosition;
+        position = number != noOfSnakes ? endingPositions[number] : position;
+        return position;
     }
 
 

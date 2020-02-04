@@ -5,15 +5,14 @@ class Ladders
 
     int getEndPosition(int playerPosition)
     {
-        int number, noOfLadders = startPositions.length;
-        for(number=0; number<noOfLadders; number++)
+        int noOfLadders = startPositions.length;
+        int number = 0;
+        while (position != stratPositions[number] && number < noOfSnakes)
         {
-            if(playerPosition == startPositions[number])
-            {
-                return endingPositions[number];
-            }
+            number++;
         }
-        return playerPosition;
+        position = number != noOfLadder ? endingPositions[number] : position;
+        return position;
     }
 
     void printLaddersPositions()
