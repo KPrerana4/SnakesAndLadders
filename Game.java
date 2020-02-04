@@ -88,8 +88,8 @@ class Game
         for(int playerNo = 0; playerNo < noOfPlayers; playerNo++)
         {
             int position = players[playerNo].getPosition();
-            statement = "Player" +playerNo+1+ " current Position:" + position;
-            System.out.println();
+            statement = "Player" +(playerNo+1)+ " current Position:" + position;
+            System.out.println(statement);
         }
     }
 }

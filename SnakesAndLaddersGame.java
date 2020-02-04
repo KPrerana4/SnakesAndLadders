@@ -14,6 +14,7 @@ class SnakesAndLaddersGame
     {
         Scanner read = new Scanner(System.in);
         do{
+            System.out.println("Enter value between 1 and 6");
             noOfPlayers = read.nextInt();
         }
         while(!(isNoOfPlayersValid()));
