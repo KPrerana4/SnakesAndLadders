@@ -3,15 +3,15 @@ class Ladders
     int[] startPositions = {3, 5, 11, 20};
     int[] endingPositions = {22, 8, 26, 29};
 
-    int getEndPosition(int playerPosition)
+    int getEndPosition(int position)
     {
         int noOfLadders = startPositions.length;
         int number = 0;
-        while (position != stratPositions[number] && number < noOfSnakes)
+        while (position != startPositions[number] && number < noOfSnakes)
         {
             number++;
         }
-        position = number != noOfLadder ? endingPositions[number] : position;
+        position = number != noOfLadders ? endingPositions[number] : position;
         return position;
     }
 

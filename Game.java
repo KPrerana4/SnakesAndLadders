@@ -1,9 +1,9 @@
 class Game
 {
-    Player[] players;
-    Board board;
-    Player currentPlayer;
-    int noOfPlayers, currentPlayerNo, winnerPlayerNo;
+    private Player[] players;
+    private Board board;
+    private Player currentPlayer;
+    private int noOfPlayers, currentPlayerNo, winnerNo;
 
     Game(int noOfPlayers)
     {
@@ -30,7 +30,7 @@ class Game
            anyOneWon = performGameSteps();
         }
         while(!anyOneWon);
-        printWinner(winnerPlayerNo);
+        printWinner();
     }
 
     boolean performGameSteps()
@@ -38,7 +38,7 @@ class Game
         int diceValue = getValidDiceValue();
         moveCoin(diceValue);
         boolean anyOneWon = board.winCheck(currentPlayer.getPosition());
-        winnerPlayerNo = currentPlayerNo;
+        winnerNo = currentPlayerNo;
         printGameDetails();
         changePlayer();
         return anyOneWon;
@@ -77,9 +77,9 @@ class Game
         System.out.println();
     }
 
-    void printWinner(int winnerPlayerNo)
+    void printWinner()
     {
-        System.out.println("Player " + (winnerPlayerNo + 1) + " has won");
+        System.out.println("Player " + (winnerNo + 1) + " has won");
     }
 
     void printPlayersPositions()
@@ -88,7 +88,7 @@ class Game
         for(int playerNo = 0; playerNo < noOfPlayers; playerNo++)
         {
             int position = players[playerNo].getPosition();
-            statement = "Player" +(playerNo+1)+ " current Position:" + position;
+            statement = "Player" +(playerNo+1)+" current Position:"+ position;
             System.out.println(statement);
         }
     }

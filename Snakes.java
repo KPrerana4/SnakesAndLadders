@@ -5,8 +5,7 @@ class Snakes
 
     int getEndPosition(int position)
     {
-        int noOfSnakes = startPositions.length;
-        int number = 0;
+        int number = 0, noOfSnakes = startPositions.length;
         while (position != stratPositions[number] && number < noOfSnakes)
         {
             number++;

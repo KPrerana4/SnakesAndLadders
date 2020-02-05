@@ -24,10 +24,10 @@ class SnakesAndLaddersGame
     {
         int minimumNoOfPlayers = 1, maximumNoOfPlayers = 6;
         boolean isNoOfPlayersValid;
-        boolean minimumNoSatisfied, maximumNoSatisfied;
-        minimumNoSatisfied = noOfPlayers >= minimumNoOfPlayers;
-        maximumNoSatisfied = noOfPlayers <= maximumNoOfPlayers;
-        isNoOfPlayersValid = minimumNoSatisfied && maximumNoSatisfied;
+        boolean isMinimumNoSatisfied, isMaximumNoSatisfied;
+        isMinimumNoSatisfied = noOfPlayers >= minimumNoOfPlayers;
+        isMaximumNoSatisfied = noOfPlayers <= maximumNoOfPlayers;
+        isNoOfPlayersValid = isMinimumNoSatisfied && isMaximumNoSatisfied;
         return isNoOfPlayersValid;
     }
 }

@@ -2,9 +2,9 @@ class Dice
 {
     int getDiceValue()
     {
-        int diceMaximumValue = 6;
+        int maximumValue = 7;
         int diceMinimumValue = 1;
-        int diceValue = (int)(diceMaximumValue * Math.random());
+        int diceValue = (int)(maximumValue * Math.random());
         diceValue += diceMinimumValue;
         return diceValue;
     }

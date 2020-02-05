@@ -13,8 +13,8 @@ public class Board
 
     boolean canDiceValueBeUsed(int playerCurrentPosition, int diceValue)
     {
-        boolean isValid = playerCurrentPosition + diceValue <= boardMaximumValue;
-        return isValid;
+        boolean canValueBeUsed = playerCurrentPosition + diceValue <= boardMaximumValue;
+        return canValueBeUsed;
     }
 
     int movePlayersCoin(int playerPosition, int diceValue)
