@@ -2,11 +2,13 @@ class Player
 {
     String name;
     int position;
+    int id;
 
-    Player()
+    Player(int id)
     {
        name = "";
        position = 0;
+       this.id = id;
     }
 
     void setPosition(int position)
@@ -24,10 +26,9 @@ class Player
         return name;
     }
 
-    int rollDice(Dice dice, int playerNo)
+    int rollDice(Dice dice)
     {
         int diceValue = dice.getDiceValue();
-        System.out.println("Player "+(playerNo + 1)+" dice value:"+diceValue);
         return diceValue;
     }
 }

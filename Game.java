@@ -3,51 +3,51 @@ class Game
     private Player[] players;
     private Board board;
     private Player currentPlayer;
-    private int noOfPlayers, currentPlayerNo, winnerNo;
+    private int playersCount, currentPlayerNo, winnerNo;
 
-    Game(int noOfPlayers)
+    Game(int playersCount)
     {
-        this.noOfPlayers = noOfPlayers;
-        initializePlayers();
+        this.playersCount = playersCount;
         board = new Board();
-        currentPlayer = players[0];
-        currentPlayerNo = 0;
     }
 
     void initializePlayers()
     {
-        players = new Player[noOfPlayers];
-        for (int number = 0; number < noOfPlayers; number++)
+        players = new Player[playersCount];
+        for (int number = 0; number < playersCount; number++)
         {
-            players[number] = new Player();
+            players[number] = new Player(number);
         }
     }
 
-    void play()
+    void start()
     {
-        boolean anyOneWon = false;
-        do{
-           anyOneWon = performGameSteps();
+        initializePlayers();
+        currentPlayer = players[0];
+        boolean win;
+        do {
+            win = performGameSteps();
         }
-        while(!anyOneWon);
-        printWinner();
+        while (!win);
+        displayWinner();
     }
 
     boolean performGameSteps()
     {
         int diceValue = getValidDiceValue();
         moveCoin(diceValue);
-        boolean anyOneWon = board.winCheck(currentPlayer.getPosition());
-        winnerNo = currentPlayerNo;
-        printGameDetails();
+        boolean win = board.winCheck(currentPlayer.getPosition());
+        winnerNo = currentPlayer.id;
+        printGameStatus(getPlayerPositions());
         changePlayer();
-        return anyOneWon;
+        return win;
     }
 
     int getValidDiceValue()
     {
         Dice dice = new Dice();
-        int diceValue = currentPlayer.rollDice(dice, currentPlayerNo);
+        int diceValue = currentPlayer.rollDice(dice);
+        System.out.println("Player "+(currentPlayer.id + 1)+" dice value:"+diceValue);
         boolean isDiceValueValid;
         int position = currentPlayer.getPosition();
         isDiceValueValid = board.canDiceValueBeUsed(position, diceValue);
@@ -65,30 +65,40 @@ class Game
 
     void changePlayer()
     {
-        currentPlayerNo++;
-        currentPlayerNo %= noOfPlayers;
-        currentPlayer = players[currentPlayerNo];
+        int nextPlayerId = currentPlayer.id + 1;
+        nextPlayerId %= playersCount;
+        currentPlayer = players[nextPlayerId];
     }
 
-    void printGameDetails()
+    void printGameStatus(int[] playerPositions)
     {
         board.printBoardDetails();
-        printPlayersPositions();
+        printPlayersPositions(playerPositions);
         System.out.println();
     }
 
-    void printWinner()
+    void displayWinner()
     {
         System.out.println("Player " + (winnerNo + 1) + " has won");
     }
 
-    void printPlayersPositions()
+    int[] getPlayerPositions()
+    {
+        int[] position = new int[playersCount];
+        for (int playerNo = 0; playerNo < playersCount; playerNo++)
+        {
+            position[playerNo] = players[playerNo].getPosition();
+        }
+        return position;
+    }
+
+    void printPlayersPositions(int[] playerPositions)
     {
         String statement;
-        for(int playerNo = 0; playerNo < noOfPlayers; playerNo++)
+        for(int number = 0; number < playersCount ; number++)
         {
-            int position = players[playerNo].getPosition();
-            statement = "Player" +(playerNo+1)+" current Position:"+ position;
+            int playerId = number + 1, position = playerPositions[number];
+            statement = "Player" +(playerId)+ " current Position:"+ position;
             System.out.println(statement);
         }
     }

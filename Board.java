@@ -1,20 +1,23 @@
 public class Board
 {
-    Snakes snakes;
-    Ladders ladders;
+    SnakesAndLadders snakes;
+    SnakesAndLadders ladders;
     int boardMaximumValue;
 
     Board()
     {
-        snakes = new Snakes();
-        ladders = new Ladders();
+        int[] snakesStart = {17, 19, 21, 27};
+        int[] snakesEnd =  {4, 7, 9, 1};
+        snakes = new SnakesAndLadders(snakesStart, snakesEnd);
+        int laddersStart = {3, 5, 11, 20};
+        int laddersEnd = {22, 8, 26, 29};
+        ladders = new SnakesAndLadders(laddersStart, laddersEnd);
         boardMaximumValue = 30;
     }
 
     boolean canDiceValueBeUsed(int playerCurrentPosition, int diceValue)
     {
-        boolean canValueBeUsed = playerCurrentPosition + diceValue <= boardMaximumValue;
-        return canValueBeUsed;
+        return playerCurrentPosition + diceValue <= boardMaximumValue;
     }
 
     int movePlayersCoin(int playerPosition, int diceValue)
@@ -35,7 +38,6 @@ public class Board
 
     boolean winCheck(int playerPosition)
     {
-        boolean win = playerPosition == boardMaximumValue;
-        return win;
+        return playerPosition == boardMaximumValue;
     }
 }

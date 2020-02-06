@@ -5,9 +5,8 @@ class Ladders
 
     int getEndPosition(int position)
     {
-        int noOfLadders = startPositions.length;
-        int number = 0;
-        while (position != startPositions[number] && number < noOfSnakes)
+        int number = 0, noOfLadders = startPositions.length;
+        while (number < noOfLadders && position != startPositions[number])
         {
             number++;
         }

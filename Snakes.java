@@ -5,24 +5,24 @@ class Snakes
 
     int getEndPosition(int position)
     {
-        int number = 0, noOfSnakes = startPositions.length;
-        while (position != stratPositions[number] && number < noOfSnakes)
+        int number = 0, noofSnakes = startPositions.length;
+        while (number < noofSnakes && position != startPositions[number])
         {
             number++;
         }
-        position = number != noOfSnakes ? endingPositions[number] : position;
+        position = number != noofSnakes ? endingPositions[number] : position;
         return position;
     }
 
 
-    void printSnakesPositions()
+    void printPositions()
     {
-        int noOfSnakes = startPositions.length;
-        for(int number = 0; number < noOfSnakes; number++)
+        int noofSnakes = startPositions.length;
+        for(int number = 0; number < noofSnakes; number++)
         {
-            int snakeStartsAt = startPositions[number];
-            int snakeEndsAt = endingPositions[number];
-            System.out.println(snakeStartsAt + "--->" + snakeEndsAt);
+            int startsAt = startPositions[number];
+            int endsAt = endingPositions[number];
+            System.out.println(startsAt + "--->" + endsAt);
         }
     }
 }
