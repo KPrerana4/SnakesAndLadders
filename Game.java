@@ -3,7 +3,7 @@ class Game
     private Player[] players;
     private Board board;
     private Player currentPlayer;
-    private int playersCount, currentPlayerNo, winnerNo;
+    private int playersCount, winnerNo;
 
     Game(int playersCount)
     {
@@ -26,13 +26,13 @@ class Game
         currentPlayer = players[0];
         boolean win;
         do {
-            win = performGameSteps();
+            win = play();
         }
         while (!win);
         displayWinner();
     }
 
-    boolean performGameSteps()
+    boolean play()
     {
         int diceValue = getValidDiceValue();
         moveCoin(diceValue);

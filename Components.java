@@ -1,9 +1,9 @@
-class SnakesAndLadders
+class Components
 {
     int[] startPositions;
     int[] endingPositions;
 
-    SnakesAndLaddres(int[] startPositions,int[] endingPositions)
+    Components(int[] startPositions,int[] endingPositions)
     {
         this.startPositions =  startPositions;
         this.endingPositions = endingPositions;
